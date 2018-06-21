@@ -1,0 +1,66 @@
+<mvc:View
+    controllerName="emalDubalAR.view.masterAR"
+    xmlns:mvc="sap.ui.core.mvc"
+    xmlns:core="sap.ui.core"
+    xmlns="sap.m"
+    >
+
+  <Page
+      id="MstPage"
+      title="{i18n>masterPageTitle}"
+      navButtonPress="onNavBack"
+      showNavButton="false">
+    <subHeader>
+      <Bar id="headerBar">
+        <contentMiddle>
+          <SearchField
+              id="searchField"
+              width="100%"
+              liveChange="onSearch"
+              >
+          </SearchField>
+        </contentMiddle>
+      </Bar>
+    </subHeader>
+
+    <content>
+
+
+  <List 
+  id="inBoxValues_e"
+  inset="true"
+  growing="true"
+  growingScrollToLoad="true"
+  width="100%"
+  backgroundDesign="Solid"
+  items="{
+    path:'LocalMasterModele>/masterList_e',
+    sorter: {
+      path: 'SAP__Origin',
+      descending: false,
+      group: true
+    },
+    groupHeaderFactory: '.getGroupHeader'
+  }"
+  itemPress=""
+  >
+    <items> 
+      <ObjectListItem 
+      type="Active"
+      press="onSelectionChange"
+      title='{LocalMasterModele>TaskTitle}'
+      >
+       <attributes>
+       <!-- <ObjectAttribute text = "{LocalMasterModele>InstanceID}" /> -->
+       </attributes>
+      </ObjectListItem>
+
+    </items>
+
+</List>
+
+    </content>
+
+  </Page>
+
+</mvc:View>

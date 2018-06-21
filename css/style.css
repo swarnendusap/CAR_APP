@@ -1,0 +1,110 @@
+.myBackgroundStyle {  
+   background-image: url('../image/backImgN1.jpg');
+   background-size: 100% 100%;
+   
+ }
+ .objHdrMargin{
+	
+    margin-top: 0rem;
+    margin-right: 0rem;
+    margin-bottom: 0rem;
+    margin-left: 1rem;
+    
+    padding-top: 4px;
+    padding-bottom: 0px;
+    padding-left: 0px;
+    padding-right: 0px;
+    
+ }
+ 
+ .roundedTile {
+	position: absolute;
+	top: 0;
+	left: 0;
+	border: 5px solid #dddddd;
+	box-shadow: 0 1px 3px rgba(0, 0, 0, 0.15);
+	display: inline-block;
+	transition-property: transform3d;
+	transition-duration: 0.2s;
+	margin: 0.5rem;
+	border-radius: 20px;
+	width: 12em;
+	height: 12em;
+    outline: 0;
+    background: transparent;
+    
+}
+.holdBtnStyle{
+    border-color: transparent;
+    background-color: #ff8000;
+    vertical-align: top;
+    -webkit-appearance: none;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    -webkit-background-clip: padding-box;
+    background-clip: padding-box;
+    box-sizing: border-box;
+    font-family: Arial,Helvetica,sans-serif;
+    font-size: 0.875rem;
+    height: 2.500rem;
+    min-width: 2.500rem;
+    margin: 0;
+    padding: 0;
+    text-align: center;
+    position: relative;
+       
+}
+.hdrText {
+    font-size: 1.3rem;
+    font-family: Arial,Helvetica,sans-serif;
+    line-height: normal;
+}
+/*
+ .sapMListBGSolid .sapMLIB {
+    background: #cffcd7;
+} 
+.sapMTC .sapMTile, .sapMTC .sapMCustomTile {
+    position: static;
+    left: 0;
+    height: 80px;
+    width: 120px;
+}
+
+
+.sap-phone .sapMTileContent {
+    height: 80px;
+    width: 120px;
+}
+*/
+.sap-phone .sapMStdTileTitle {
+    line-height: 1.2rem;
+    font-size: 1rem;
+    height: 4rem;
+    margin-bottom: 0;
+    font-style: normal;
+    width: 6rem;
+    color: #4EFF44;
+}
+
+
+/*
+
+.sap-phone .sapMStdTileTopRow {
+    height: 0rem;
+    margin-bottom: 0;
+}
+
+.sapUiSmallMargin {
+    margin: 0rem!important;
+}
+ .sapUiFormResGrid>div {
+    background-color: #cffcd7;
+    padding: 1rem 0.75rem;
+    
+} */
+/* .sapUiFormResLayout>div {
+    background-color: #cffcd7;
+    padding: 1rem 0.75rem;
+    
+} */

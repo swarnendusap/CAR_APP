@@ -1,0 +1,187 @@
+<mvc:View controllerName="emalDubalAR.view.detailAR" xmlns="sap.m" xmlns:mvc="sap.ui.core.mvc" xmlns:f="sap.ui.layout.form"
+  xmlns:core="sap.ui.core">
+  <Page id="dtlPage" navButtonPress="onNavBackDetail" showNavButton="{deviceModel>/deviceModel}"
+    title="{= ${localOnHoldVisibleModel>/isVisibleOnHold} === true ? ${i18n>masterPageTitleEmal} : ${i18n>masterPageTitleDubal} }">
+    <content>
+      <ObjectHeader class="objHdrMargin" id="objectHeader" title="{LocalArTextModel>/arText/ArNo} - {dtlModelValue>/Detail/ArName}"></ObjectHeader>
+      <IconTabBar id="iconTabBar" class="sapUiResponsiveContentPadding">
+        <items>
+          <IconTabFilter id="iconTabBarFilter" icon="sap-icon://hint" text="Summery" tooltip="Summery">
+            <VBox class="sapUiSmallMargin">
+              <f:SimpleForm id="Summery" minWidth="1024" maxContainerCols="2" editable="false" layout="ResponsiveGridLayout" title="" labelSpanL="4"
+                labelSpanM="4" emptySpanL="0" emptySpanM="0" columnsL="2" columnsM="2">
+                <f:content>
+                  <Label text="AR Amount"/>
+                  <Text
+                    text="{ parts:[ {path: 'dtlModelValue>/Detail/Currency'}, {path: 'dtlModelValue>/Detail/PlanTotal'} ], formatter: 'emalDubalAR.util.formatter.concateTwoValue_roundVal' }"/>
+                  <Label text="Budgeted"/>
+                  <Text text="{path: 'dtlModelValue>/Detail/Usr10'}"/>
+                  <Label text="Total Approved Budget"/>
+                  <Text
+                    text="{ parts:[ {path: 'dtlModelValue>/Detail/Use07'}, {path: 'dtlModelValue>/Detail/Usr07'} ], formatter: 'emalDubalAR.util.formatter.concateTwoValue' }"/>
+                  <Label text="Reason for investment"/>
+                  <Text
+                    text="{ parts:[ {path: 'dtlModelValue>/Detail/InvReason'}, {path: 'dtlModelValue>/Detail/InvReasonTxt'} ], formatter: 'emalDubalAR.util.formatter.concateTwoValue' }"/>
+                  <Label text="Envir. investment"/>
+                  <Text
+                    text="{ parts:[ {path: 'dtlModelValue>/Detail/EnvInvest'}, {path: 'dtlModelValue>/Detail/EnvInvestTxt'} ], formatter: 'emalDubalAR.util.formatter.concateTwoValue' }"/>
+                  <Label text="Priority"/>
+                  <Text
+                    text="{ parts:[ {path: 'dtlModelValue>/Detail/Priority'}, {path: 'dtlModelValue>/Detail/PriorityTxt'} ], formatter: 'emalDubalAR.util.formatter.concateTwoValue' }"/>
+                  <Label text="Req. Cost Center"/>
+                  <Text
+                    text="{ parts:[ {path: 'dtlModelValue>/Detail/ReqCostCtr'}, {path: 'dtlModelValue>/Detail/ReqCostCtrTxt'} ], formatter: 'emalDubalAR.util.formatter.concateTwoValue' }"/>
+                  <Label text="Resp. Cost Center"/>
+                  <Text
+                    text="{ parts:[ {path: 'dtlModelValue>/Detail/ResCostCtr'}, {path: 'dtlModelValue>/Detail/ResCostCtrTxt'} ], formatter: 'emalDubalAR.util.formatter.concateTwoValue' }"/>
+                  <Label text="Justification"/>
+                  <TextArea xmlns="sap.m" id="textId" visible="true" value="{LocalArTextModel>/arText}" width="" enabled="true" valueState="None" name=""
+                    placeholder="" editable="false" valueStateText="" textAlign="Initial" textDirection="Inherit" rows="5" cols="20" height=""></TextArea>
+                </f:content>
+              </f:SimpleForm>
+            </VBox>
+          </IconTabFilter>
+          <IconTabFilter visible="false" id="iconTabBarFilter1" icon="sap-icon://hint" text="General Data" tooltip="General Data">
+            <VBox class="sapUiSmallMargin">
+              <f:SimpleForm id="GeneralData" minWidth="1024" maxContainerCols="2" editable="false" layout="ResponsiveGridLayout" title="" labelSpanL="4"
+                labelSpanM="4" emptySpanL="0" emptySpanM="0" columnsL="2" columnsM="2">
+                <f:content>
+                  <Label text="Reason for investment"/>
+                  <Text
+                    text="{ parts:[ {path: 'dtlModelValue>/Detail/InvReason'}, {path: 'dtlModelValue>/Detail/InvReasonTxt'} ], formatter: 'emalDubalAR.util.formatter.concateTwoValue' }"/>
+                  <Label text="Envir. investment"/>
+                  <Text
+                    text="{ parts:[ {path: 'dtlModelValue>/Detail/EnvInvest'}, {path: 'dtlModelValue>/Detail/EnvInvestTxt'} ], formatter: 'emalDubalAR.util.formatter.concateTwoValue' }"/>
+                  <Label text="Scale"/>
+                  <Text
+                    text="{ parts:[ {path: 'dtlModelValue>/Detail/Scale'}, {path: 'dtlModelValue>/Detail/ScaleTxt'} ], formatter: 'emalDubalAR.util.formatter.concateTwoValue' }"/>
+                  <Label text="Priority"/>
+                  <Text
+                    text="{ parts:[ {path: 'dtlModelValue>/Detail/Priority'}, {path: 'dtlModelValue>/Detail/PriorityTxt'} ], formatter: 'emalDubalAR.util.formatter.concateTwoValue' }"/>
+                  <Label text="Approval Year"/>
+                  <Text text="{ path: 'dtlModelValue>/Detail/AppYear', formatter: 'emalDubalAR.util.formatter.concateOneValue' }"/>
+                </f:content>
+              </f:SimpleForm>
+            </VBox>
+          </IconTabFilter>
+          <IconTabFilter visible="false" id="iconTabBarFilter2" icon="sap-icon://company-view" text="Organization Unit" tooltip="Organization Unit">
+            <VBox class="sapUiSmallMargin">
+              <f:SimpleForm id="OrganizationUnit" minWidth="1024" maxContainerCols="2" editable="false" layout="ResponsiveGridLayout" title=""
+                labelSpanL="4" labelSpanM="4" emptySpanL="0" emptySpanM="0" columnsL="2" columnsM="2">
+                <f:content>
+                  <core:Title text="Requesting Organization Unit"/>
+                  <Label text="Requesting Co. code"/>
+                  <Text
+                    text="{ parts:[ {path: 'dtlModelValue>/Detail/ReqCoCode'}, {path: 'dtlModelValue>/Detail/ReqCoCodeTxt'} ], formatter: 'emalDubalAR.util.formatter.concateTwoValue' }"/>
+                  <Label text="Req. Cost Center"/>
+                  <Text
+                    text="{ parts:[ {path: 'dtlModelValue>/Detail/ReqCostCtr'}, {path: 'dtlModelValue>/Detail/ReqCostCtrTxt'} ], formatter: 'emalDubalAR.util.formatter.concateTwoValue' }"/>
+                  <Label text="Req. Profit Center"/>
+                  <Text
+                    text="{ parts:[ {path: 'dtlModelValue>/Detail/ReqProfCtr'}, {path: 'dtlModelValue>/Detail/ReqProfCtrTxt'} ], formatter: 'emalDubalAR.util.formatter.concateTwoValue' }"/>
+                  <core:Title text="Responsible Organization Unit"/>
+                  <Label text="Responsible Co. code"/>
+                  <Text
+                    text="{ parts:[ {path: 'dtlModelValue>/Detail/ResCoCode'}, {path: 'dtlModelValue>/Detail/ResCoCodeTxt'} ], formatter: 'emalDubalAR.util.formatter.concateTwoValue' }"/>
+                  <Label text="Resp. Cost Center"/>
+                  <Text
+                    text="{ parts:[ {path: 'dtlModelValue>/Detail/ResCostCtr'}, {path: 'dtlModelValue>/Detail/ResCostCtrTxt'} ], formatter: 'emalDubalAR.util.formatter.concateTwoValue' }"/>
+                  <Label text="Resp. Profit Center"/>
+                  <Text
+                    text="{ parts:[ {path: 'dtlModelValue>/Detail/ResProfCtr'}, {path: 'dtlModelValue>/Detail/ResProfCtrTxt'} ], formatter: 'emalDubalAR.util.formatter.concateTwoValue' }"/>
+                </f:content>
+              </f:SimpleForm>
+            </VBox>
+          </IconTabFilter>
+          <IconTabFilter visible="false" id="iconTabBarFilter3" icon="sap-icon://employee" text="User Fields" tooltip="User Fields">
+            <VBox class="sapUiSmallMargin">
+              <f:SimpleForm id="UserFields" minWidth="1024" maxContainerCols="2" editable="false" layout="ResponsiveGridLayout" title="" labelSpanL="4"
+                labelSpanM="4" emptySpanL="0" emptySpanM="0" columnsL="2" columnsM="2">
+                <f:content>
+                  <Label text="OPR-CORP"/>
+                  <Text
+                    text="{ parts:[ {path: 'dtlModelValue>/Detail/User02'}, {path: 'dtlModelValue>/Detail/User02Txt'} ], formatter: 'emalDubalAR.util.formatter.concateTwoValue' }"/>
+                  <Label text="Project Category"/>
+                  <Text
+                    text="{ parts:[ {path: 'dtlModelValue>/Detail/User03'}, {path: 'dtlModelValue>/Detail/User03Txt'} ], formatter: 'emalDubalAR.util.formatter.concateTwoValue' }"/>
+                  <Label text="Project types"/>
+                  <Text text="{ path: 'dtlModelValue>/Detail/ProjType', formatter: 'emalDubalAR.util.formatter.concateOneValue' }"/>
+                  <Label text="Project Sub-types"/>
+                  <Text text="{ path: 'dtlModelValue>/Detail/ProjSubtype', formatter: 'emalDubalAR.util.formatter.concateOneValue' }"/>
+                </f:content>
+              </f:SimpleForm>
+            </VBox>
+          </IconTabFilter>
+          <IconTabFilter visible="false" id="iconTabBarFilter4" icon="sap-icon://opportunities" text="Variants" tooltip="Variants">
+            <VBox class="sapUiSmallMargin">
+              <f:SimpleForm id="Variants" minWidth="1024" maxContainerCols="2" editable="false" layout="ResponsiveGridLayout" title="" labelSpanL="4"
+                labelSpanM="4" emptySpanL="0" emptySpanM="0" columnsL="2" columnsM="2">
+                <f:content>
+                  <Label text="Variant"/>
+                  <Text
+                    text="{ parts:[ {path: 'dtlModelValue>/Detail/Varnt'}, {path: 'dtlModelValue>/Detail/VarntTxt'} ], formatter: 'emalDubalAR.util.formatter.concateTwoValue' }"/>
+                  <Label text="Total Plan Value"/>
+                  <Text
+                    text="{ parts:[ {path: 'dtlModelValue>/Detail/Currency'}, {path: 'dtlModelValue>/Detail/PlanTotal'} ], formatter: 'emalDubalAR.util.formatter.concateTwoValue' }"/>
+                  <Label text="Plan Year"/>
+                  <Text text="{ path: 'dtlModelValue>/Detail/PlanYear', formatter: 'emalDubalAR.util.formatter.concateOneValue' }"/>
+                </f:content>
+              </f:SimpleForm>
+            </VBox>
+          </IconTabFilter>
+          <IconTabFilter id="iconTabBarFilter6" icon="sap-icon://citizen-connect" text="Workflow Log" tooltip="Workflow Log">
+            <VBox class="sapUiSmallMargin">
+              <f:SimpleForm id="workLog" minWidth="1024" maxContainerCols="2" editable="false" layout="ResponsiveGridLayout" title="" labelSpanL="4"
+                labelSpanM="4" emptySpanL="0" emptySpanM="0" columnsL="2" columnsM="2">
+                <f:content>
+                  <core:Title text="Workflow Log"/>
+                  <Label text="AR Requestor"/>
+                  <Text
+                    text="{ parts:[ {path: 'dtlModelValue>/Detail/ArReqName'}, {path: 'dtlModelValue>/Detail/ArRequestor'} ], formatter: 'emalDubalAR.util.formatter.concateARRequestorCreator' }"/>
+                  <Label text="AR Creator"/>
+                  <Text
+                    text="{ parts:[ {path: 'dtlModelValue>/Detail/CreatorName'}, {path: 'dtlModelValue>/Detail/CreatedBy'} ], formatter: 'emalDubalAR.util.formatter.concateARRequestorCreator' }"/>
+                  <Label text="Already Approved By"/>
+                  <List id="inBoxValues" inset="true" growing="true" growingScrollToLoad="true" width="100%" backgroundDesign="Solid"
+                    items="{ path:'detailWiLogModelValue>/wiLogItems' }" itemPress="">
+                    <items>
+                      <ObjectListItem
+                        title="{ parts:[ {path: 'Khat>NameText'}, {path: 'detailWiLogModelValue>Pernr'} ], formatter: 'emalDubalAR.util.formatter.concateNameAndEmployeeNumber' }"/>
+                    </items>
+                  </List>
+                </f:content>
+              </f:SimpleForm>
+            </VBox>
+          </IconTabFilter>
+          <IconTabFilter id="iconTabBarFilter5" icon="sap-icon://attachment" text="Attachment" tooltip="Attached Documents">
+            <VBox class="sapUiSmallMargin">
+              <f:SimpleForm id="attachedDocs" minWidth="1024" maxContainerCols="2" editable="false" layout="ResponsiveGridLayout" title="" labelSpanL="4"
+                labelSpanM="4" emptySpanL="0" emptySpanM="0" columnsL="2" columnsM="2">
+                <f:content>
+                  <core:Title text="Check Supporting Documents"/>
+                  <List id="attDocValues" inset="true" growing="true" growingScrollToLoad="true" width="100%" backgroundDesign="Solid"
+                    items="{ path:'docListModelValue>/attachments' }" itemPress="">
+                    <items>
+                      <ObjectListItem title='{docListModelValue>FileName}' type="Active" press="onDocSelect"></ObjectListItem>
+                    </items>
+                  </List>
+                </f:content>
+              </f:SimpleForm>
+            </VBox>
+          </IconTabFilter>
+        </items>
+      </IconTabBar>
+    </content>
+    <footer>
+      <Toolbar>
+        <content>
+          <ToolbarSpacer/>
+          <Button type="Accept" text="Approve" press="onPressAccept" icon="sap-icon://accept"/>
+          <Button visible="{localOnHoldVisibleModel>/isVisibleOnHold}" class="holdBtnStyle" text="On Hold" press="onPressOnHold"
+            icon="sap-icon://media-pause"/>
+          <Button type="Reject" text="Reject" press="onPressReject" icon="sap-icon://decline"/>
+        </content>
+      </Toolbar>
+    </footer>
+  </Page>
+</mvc:View>

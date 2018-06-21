@@ -1,0 +1,48 @@
+<core:View xmlns:core="sap.ui.core" xmlns:mvc="sap.ui.core.mvc" xmlns="sap.m"
+		controllerName="emalDubalAR.view.tileView" xmlns:html="http://www.w3.org/1999/xhtml">
+	<Page title="" class="myBackgroundStyle">
+	
+		<customHeader>
+		<Bar xmlns="sap.m"
+		id="id"
+		busy="false"
+		busyIndicatorDelay="1000"
+		visible="true"
+		fieldGroupIds=""
+		enableFlexBox="false"
+		translucent="false"
+		design="Auto"
+		validateFieldGroup="">
+			<contentLeft>
+			<Image src='image/EGA_Logo.PNG' height="90%"/>
+			</contentLeft> <!-- sap.ui.core.Control -->
+			<contentMiddle><Text class="hdrText" text="{i18n>titlePageHeader}"/></contentMiddle> <!-- sap.ui.core.Control -->
+			<contentRight></contentRight> <!-- sap.ui.core.Control -->
+		</Bar>
+	</customHeader>
+
+		<content>
+		
+		<TileContainer
+					id="container"
+		>
+					
+			<StandardTile 
+			class="roundedTile"
+			xmlns="sap.m"
+				id="tileId"
+				busy="false"
+				busyIndicatorDelay="1000"
+				visible="true"
+				number="{LocalApvPenModel>/apvPenCount}"
+				numberUnit=""
+				title="{i18n>tilePageTitle}"
+				info=""
+				press="onPress" 
+				/>
+				
+		</TileContainer>
+		
+		</content>
+	</Page>
+</core:View>
