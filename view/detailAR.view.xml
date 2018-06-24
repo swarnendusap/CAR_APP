@@ -1,46 +1,199 @@
 <mvc:View controllerName="emalDubalAR.view.detailAR" xmlns="sap.m" xmlns:mvc="sap.ui.core.mvc" xmlns:f="sap.ui.layout.form"
-  xmlns:core="sap.ui.core">
-  <Page id="dtlPage" navButtonPress="onNavBackDetail" showNavButton="{deviceModel>/deviceModel}"
-    title="{= ${localOnHoldVisibleModel>/isVisibleOnHold} === true ? ${i18n>masterPageTitleEmal} : ${i18n>masterPageTitleDubal} }">
-    <content>
-      <ObjectHeader class="objHdrMargin" id="objectHeader" title="{LocalArTextModel>/arText/ArNo} - {dtlModelValue>/Detail/ArName}"></ObjectHeader>
-      <IconTabBar id="iconTabBar" class="sapUiResponsiveContentPadding">
-        <items>
-          <IconTabFilter id="iconTabBarFilter" icon="sap-icon://hint" text="Summery" tooltip="Summery">
-            <VBox class="sapUiSmallMargin">
-              <f:SimpleForm id="Summery" minWidth="1024" maxContainerCols="2" editable="false" layout="ResponsiveGridLayout" title="" labelSpanL="4"
-                labelSpanM="4" emptySpanL="0" emptySpanM="0" columnsL="2" columnsM="2">
-                <f:content>
-                  <Label text="AR Amount"/>
-                  <Text
-                    text="{ parts:[ {path: 'dtlModelValue>/Detail/Currency'}, {path: 'dtlModelValue>/Detail/PlanTotal'} ], formatter: 'emalDubalAR.util.formatter.concateTwoValue_roundVal' }"/>
-                  <Label text="Budgeted"/>
-                  <Text text="{path: 'dtlModelValue>/Detail/Usr10'}"/>
-                  <Label text="Total Approved Budget"/>
-                  <Text
-                    text="{ parts:[ {path: 'dtlModelValue>/Detail/Use07'}, {path: 'dtlModelValue>/Detail/Usr07'} ], formatter: 'emalDubalAR.util.formatter.concateTwoValue' }"/>
-                  <Label text="Reason for investment"/>
-                  <Text
-                    text="{ parts:[ {path: 'dtlModelValue>/Detail/InvReason'}, {path: 'dtlModelValue>/Detail/InvReasonTxt'} ], formatter: 'emalDubalAR.util.formatter.concateTwoValue' }"/>
-                  <Label text="Envir. investment"/>
-                  <Text
-                    text="{ parts:[ {path: 'dtlModelValue>/Detail/EnvInvest'}, {path: 'dtlModelValue>/Detail/EnvInvestTxt'} ], formatter: 'emalDubalAR.util.formatter.concateTwoValue' }"/>
-                  <Label text="Priority"/>
-                  <Text
-                    text="{ parts:[ {path: 'dtlModelValue>/Detail/Priority'}, {path: 'dtlModelValue>/Detail/PriorityTxt'} ], formatter: 'emalDubalAR.util.formatter.concateTwoValue' }"/>
-                  <Label text="Req. Cost Center"/>
-                  <Text
-                    text="{ parts:[ {path: 'dtlModelValue>/Detail/ReqCostCtr'}, {path: 'dtlModelValue>/Detail/ReqCostCtrTxt'} ], formatter: 'emalDubalAR.util.formatter.concateTwoValue' }"/>
-                  <Label text="Resp. Cost Center"/>
-                  <Text
-                    text="{ parts:[ {path: 'dtlModelValue>/Detail/ResCostCtr'}, {path: 'dtlModelValue>/Detail/ResCostCtrTxt'} ], formatter: 'emalDubalAR.util.formatter.concateTwoValue' }"/>
-                  <Label text="Justification"/>
-                  <TextArea xmlns="sap.m" id="textId" visible="true" value="{LocalArTextModel>/arText}" width="" enabled="true" valueState="None" name=""
+	xmlns:core="sap.ui.core">
+	<Page id="dtlPage" navButtonPress="onNavBackDetail" showNavButton="{deviceModel>/deviceModel}"
+			title="CAR Request Details">
+		<!--title="{= ${localOnHoldVisibleModel>/isVisibleOnHold} === true ? ${i18n>masterPageTitleEmal} : ${i18n>masterPageTitleDubal} }">-->
+		<content>
+			<ObjectHeader class="objHdrMargin" id="objectHeader" title="{LocalArTextModel>/arText/ArNo}  {dtlModelValue>/Detail/ArName}"></ObjectHeader>
+			<IconTabBar id="iconTabBar" class="sapUiResponsiveContentPadding">
+				<items>
+					<IconTabFilter id="iconTabBarFilter_customer" icon="sap-icon://customer" text="{i18n>tabCustomerDetails}"
+						tooltip="{i18n>tabCustomerDetails}">
+						<VBox class="sapUiSmallMargin">
+							<f:SimpleForm id="SimForm_customer" minWidth="1024" maxContainerCols="2" editable="false" layout="ResponsiveGridLayout" title=""
+								labelSpanL="4" labelSpanM="4" emptySpanL="0" emptySpanM="0" columnsL="2" columnsM="2">
+								<f:content>
+									<!--<Label text="{i18n>tabCustomerDetails}"/>-->
+									<Label text="Customer Account Number"/>
+									<Text text="{path: 'dtlModelValue>/Customer/Knkli'}"/>
+									<!--                  <Text
+                    text="{ parts:[ {path: 'dtlModelValue>/Customer/Currency'}, {path: 'dtlModelValue>/Customer/PlanTotal'} ], formatter: 'emalDubalAR.util.formatter.concateTwoValue_roundVal' }"/>-->
+									<Label text="Country"/>
+									<Text text="{path: 'dtlModelValue>/Customer/Country'}"/>
+									<Label text="Payment Performance (Days)"/>
+									<Text text="{path: 'dtlModelValue>/Customer/AvgArrear'}"/>
+									<!--<Text text="{ parts:[ {path: 'dtlModelValue>/Customer/Use07'}, {path: 'dtlModelValue>/Customer/Usr07'} ], formatter: 'emalDubalAR.util.formatter.concateTwoValue' }"/>-->
+									<Label text="Risk Category"/>
+									<Text text="{path: 'dtlModelValue>/Customer/Ctlpc'}"/>
+									<!--<Text
+                    text="{ parts:[ {path: 'dtlModelValue>/Customer/InvReason'}, {path: 'dtlModelValue>/Customer/InvReasonTxt'} ], formatter: 'emalDubalAR.util.formatter.concateTwoValue' }"/>-->
+									<Label text="Payment Terms"/>
+									<Text text="{path: 'dtlModelValue>/Customer/Zterm'}"/>
+									<!--<Text
+                    text="{ parts:[ {path: 'dtlModelValue>/Customer/EnvInvest'}, {path: 'dtlModelValue>/Customer/EnvInvestTxt'} ], formatter: 'emalDubalAR.util.formatter.concateTwoValue' }"/>-->
+									<Label text="Own Explanation"/>
+									<Text text="{path: 'dtlModelValue>/Customer/ZtermDesc'}"/>
+									<!--<Text
+                    text="{ parts:[ {path: 'dtlModelValue>/Customer/Priority'}, {path: 'dtlModelValue>/Customer/PriorityTxt'} ], formatter: 'emalDubalAR.util.formatter.concateTwoValue' }"/>-->
+									<Label text="Last 12 Months Sales Quantity"/>
+									<Text text="{path: 'dtlModelValue>/Customer/SalesQty'}"/>
+									<!--<Text
+                    text="{ parts:[ {path: 'dtlModelValue>/Customer/ReqCostCtr'}, {path: 'dtlModelValue>/Customer/ReqCostCtrTxt'} ], formatter: 'emalDubalAR.util.formatter.concateTwoValue' }"/>-->
+									<Label text="Last 12 Months Invoice Value"/>
+									<Text text="{path: 'dtlModelValue>/Customer/InvoiceValue'}"/>
+									<!--<Text
+                    text="{ parts:[ {path: 'dtlModelValue>/Customer/ResCostCtr'}, {path: 'dtlModelValue>/Customer/ResCostCtrTxt'} ], formatter: 'emalDubalAR.util.formatter.concateTwoValue' }"/>-->
+									<Label text="Comments"/>
+									<Text text="{path: 'dtlModelValue>/Customer/Comments'}"/>
+									<!--<TextArea xmlns="sap.m" id="textId" visible="true" value="{LocalArTextModel>/arText}" width="" enabled="true" valueState="None" name=""
+                    placeholder="" editable="false" valueStateText="" textAlign="Initial" textDirection="Inherit" rows="5" cols="20" height=""></TextArea>-->
+								</f:content>
+							</f:SimpleForm>
+						</VBox>
+					</IconTabFilter>
+					<IconTabFilter id="iconTabBarFilter_credit" icon="sap-icon://customer-financial-fact-sheet" text="{i18n>tabCreditDetails}"
+						tooltip="{i18n>tabCreditDetails}">
+						<VBox class="sapUiSmallMargin">
+							<f:SimpleForm id="SimForm_credit" minWidth="1024" maxContainerCols="2" editable="false" layout="ResponsiveGridLayout" title=""
+								labelSpanL="4" labelSpanM="4" emptySpanL="0" emptySpanM="0" columnsL="2" columnsM="2">
+								<f:content>
+									<!--<Label text="{i18n>tabCustomerDetails}"/>-->
+									<Label text="Credit Exp in EGA"/>
+									<Text text="{path: 'dtlModelValue>/Credit/ExpEga'}"/>
+									<!--                  <Text
+                    text="{ parts:[ {path: 'dtlModelValue>/Credit/Currency'}, {path: 'dtlModelValue>/Credit/PlanTotal'} ], formatter: 'emalDubalAR.util.formatter.concateTwoValue_roundVal' }"/>-->
+									<Label text="Receivables in EGA"/>
+									<Text text="{path: 'dtlModelValue>/Credit/RcvEga'}"/>
+									<Label text="EGA Recommended Limit"/>
+									<Text text="{path: 'dtlModelValue>/Credit/RevKlimkEga'}"/>
+									<!--<Text text="{ parts:[ {path: 'dtlModelValue>/Credit/Use07'}, {path: 'dtlModelValue>/Credit/Usr07'} ], formatter: 'emalDubalAR.util.formatter.concateTwoValue' }"/>-->
+									<Label text="EGA Current Limit"/>
+									<Text text="{path: 'dtlModelValue>/Credit/KlimkEga'}"/>
+									<!--<Text
+                    text="{ parts:[ {path: 'dtlModelValue>/Credit/InvReason'}, {path: 'dtlModelValue>/Credit/InvReasonTxt'} ], formatter: 'emalDubalAR.util.formatter.concateTwoValue' }"/>-->
+									<Label text="Last Internal Review"/>
+									<!--<Text text="{path: 'dtlModelValue>/Credit/Dtrev'}"/>-->
+									<Text text="{parts: ['dtlModelValue>/Credit/Dtrev'] , formatter:'emalDubalAR.util.formatter.dateFormatter'}" />
+									<!--<Text
+                    text="{ parts:[ {path: 'dtlModelValue>/Credit/EnvInvest'}, {path: 'dtlModelValue>/Credit/EnvInvestTxt'} ], formatter: 'emalDubalAR.util.formatter.concateTwoValue' }"/>-->
+									<Label text="Recommended NRD"/>
+									<!--<Text text="{path: 'dtlModelValue>/Credit/RevNxtrv'}"/>-->
+									<Text text="{parts: ['dtlModelValue>/Credit/RevNxtrv'] , formatter:'emalDubalAR.util.formatter.dateFormatter'}" />
+									<!--<Text
+                    text="{ parts:[ {path: 'dtlModelValue>/Credit/Priority'}, {path: 'dtlModelValue>/Credit/PriorityTxt'} ], formatter: 'emalDubalAR.util.formatter.concateTwoValue' }"/>-->
+									<Label text="Recommended Rating (EGA)"/>
+									<Text text="{path: 'dtlModelValue>/Credit/RevDbrtg'}"/>
+									<!--<Text
+                    text="{ parts:[ {path: 'dtlModelValue>/Credit/ReqCostCtr'}, {path: 'dtlModelValue>/Credit/ReqCostCtrTxt'} ], formatter: 'emalDubalAR.util.formatter.concateTwoValue' }"/>-->
+									<Label text="Currency"/>
+									<Text text="{path: 'dtlModelValue>/Credit/Waers'}"/>
+									<!--<Text
+                    text="{ parts:[ {path: 'dtlModelValue>/Credit/ResCostCtr'}, {path: 'dtlModelValue>/Credit/ResCostCtrTxt'} ], formatter: 'emalDubalAR.util.formatter.concateTwoValue' }"/>-->
+									<Label text="Credit Analyst"/>
+									<Text text="{path: 'dtlModelValue>/Credit/CreditAnalyst'}"/>
+									<!--<TextArea xmlns="sap.m" id="textId" visible="true" value="{LocalArTextModel>/arText}" width="" enabled="true" valueState="None" name=""
+                    placeholder="" editable="false" valueStateText="" textAlign="Initial" textDirection="Inherit" rows="5" cols="20" height=""></TextArea>-->
+								</f:content>
+							</f:SimpleForm>
+						</VBox>
+					</IconTabFilter>
+					<IconTabFilter id="iconTabBarFilter5" icon="sap-icon://create" text="Recommendation" tooltip="Recommendation">
+						<VBox class="sapUiSmallMargin">
+							<f:SimpleForm id="attachedDocs" minWidth="1024" maxContainerCols="2" editable="false" layout="ResponsiveGridLayout" title="" labelSpanL="4"
+								labelSpanM="4" emptySpanL="0" emptySpanM="0" columnsL="2" columnsM="2">
+								<f:content>
+									<core:Title text="Recommendation"/>
+									<TextArea xmlns="sap.m" id="textId" visible="true" value="{dtlModelValue>/Recom}" width="" enabled="true" valueState="None" name=""
                     placeholder="" editable="false" valueStateText="" textAlign="Initial" textDirection="Inherit" rows="5" cols="20" height=""></TextArea>
-                </f:content>
-              </f:SimpleForm>
-            </VBox>
-          </IconTabFilter>
+                    
+<!--									<List id="attDocValues" inset="true" growing="true" growingScrollToLoad="true" width="100%" backgroundDesign="Solid"
+										items="{ path:'docListModelValue>/attachments' }" itemPress="">
+										<items>
+											<ObjectListItem title='{docListModelValue>FileName}' type="Active" press="onDocSelect"></ObjectListItem>
+										</items>
+									</List>-->
+								</f:content>
+							</f:SimpleForm>
+						</VBox>
+					</IconTabFilter>					
+					<IconTabFilter id="iconTabBarFilter6" icon="sap-icon://citizen-connect" text="Workflow Log" tooltip="Workflow Log">
+						<VBox class="sapUiSmallMargin">
+							<f:SimpleForm id="workLog" minWidth="1024" maxContainerCols="2" editable="false" layout="ResponsiveGridLayout" title="" labelSpanL="4"
+								labelSpanM="4" emptySpanL="0" emptySpanM="0" columnsL="2" columnsM="2">
+								<f:content>
+									<core:Title text="Workflow Log"/>
+						<!--			<Label text="CAR Requestor"/>
+									<Text
+										text="{ parts:[ {path: 'dtlModelValue>/Detail/ArReqName'}, {path: 'dtlModelValue>/Detail/ArRequestor'} ], formatter: 'emalDubalAR.util.formatter.concateARRequestorCreator' }"/>-->
+									<Label text="CAR Creator"/>
+									<Text text="{path: 'dtlModelValue>/wiLogItems/0/Crnam'}"/>
+									<!--<Text
+										text="{ parts:[ {path: 'dtlModelValue>/Detail/CreatorName'}, {path: 'dtlModelValue>/wiLogItems/0/Crnam'} ], formatter: 'emalDubalAR.util.formatter.concateARRequestorCreator' }"/>-->
+									<Label text="Approvals"/>
+									<List id="inBoxValues" inset="true" growing="true" growingScrollToLoad="true" width="100%" backgroundDesign="Solid"
+										items="{ path:'dtlModelValue>/wiLogItems' }" itemPress="">
+										<items>
+											<ObjectListItem
+												title="{ parts:[ {path: 'dtlModelValue>AprvLevel'}, {path: 'dtlModelValue>AprvName'}, {path: 'dtlModelValue>Comments'}, {path: 'dtlModelValue>Aprdat'} ], formatter: 'emalDubalAR.util.formatter.concateWfLogApprovedBy' }"/>
+										</items>
+									</List>
+								</f:content>
+							</f:SimpleForm>
+							<!--<ScrollContainer horizontal="true" vertical="true" height="100%">
+							<Table items="{path: 'dtlModelValue>/wiLogItems' }" headerText="Workflow Details">
+								<columns>
+									<Column width="5em"><Label text="ID"/></Column>
+									<Column width="5em"><Label text="Approval Level"/></Column>
+									<Column width="10em"><Label text="Approver"/></Column>
+									<Column width="10em"><Label text="Approver Name"/></Column>
+									<Column width="10em"><Label text="Status"/></Column>
+									<Column width="5em"><Label text="Approver Comments"/></Column>
+									<Column width="10em"><Label text="Created by"/></Column>
+									<Column width="10em"><Label text="Created on"/></Column>
+									<Column width="10em"><Label text="Created time"/></Column>
+									<Column width="5em"><Label text="Approved by"/></Column>
+									<Column width="5em"><Label text="Approved on"/></Column>
+									<Column width="5em"><Label text="Approved at"/></Column>
+								</columns>
+								<items>
+									<ColumnListItem>
+										<cells>
+											<Input value="{dtlModelValue>Wiid}"/>
+											<Input value="{dtlModelValue>AprvLevel}"/>
+											<Input value="{dtlModelValue>AprvUname}"/>
+											<Input value="{dtlModelValue>AprvName}"/>
+											<Input value="{dtlModelValue>StatusDescr}"/>
+											<Input value="{dtlModelValue>Comments}"/>
+											<Input value="{dtlModelValue>Crnam}"/>
+											<Input value="{dtlModelValue>Crdat}"/>
+											<Input value="{dtlModelValue>Crtim}"/>
+											<Input value="{dtlModelValue>Aprnam}"/>
+											<Input value="{dtlModelValue>Aprdat}"/>
+											<Input value="{dtlModelValue>Aprtim}"/>
+										</cells>
+									</ColumnListItem>
+								</items>
+							</Table>
+							</ScrollContainer>-->
+						</VBox>
+					</IconTabFilter>
+				</items>
+			</IconTabBar>
+		</content>
+		<footer>
+			<Toolbar>
+				<content>
+					<ToolbarSpacer/>
+					<Button id="bAccept" type="Accept" text="Approve" press="onPressAccept" icon="sap-icon://accept"/>
+					<!--<Button visible="{localOnHoldVisibleModel>/isVisibleOnHold}" class="holdBtnStyle" text="On Hold" press="onPressOnHold"
+						icon="sap-icon://media-pause"/>-->
+					<Button id="bReject" type="Reject" text="Reject" press="onPressReject" icon="sap-icon://decline"/>
+				</content>
+			</Toolbar>
+		</footer>
+	</Page>
+</mvc:View>
+<!--
           <IconTabFilter visible="false" id="iconTabBarFilter1" icon="sap-icon://hint" text="General Data" tooltip="General Data">
             <VBox class="sapUiSmallMargin">
               <f:SimpleForm id="GeneralData" minWidth="1024" maxContainerCols="2" editable="false" layout="ResponsiveGridLayout" title="" labelSpanL="4"
@@ -129,59 +282,4 @@
               </f:SimpleForm>
             </VBox>
           </IconTabFilter>
-          <IconTabFilter id="iconTabBarFilter6" icon="sap-icon://citizen-connect" text="Workflow Log" tooltip="Workflow Log">
-            <VBox class="sapUiSmallMargin">
-              <f:SimpleForm id="workLog" minWidth="1024" maxContainerCols="2" editable="false" layout="ResponsiveGridLayout" title="" labelSpanL="4"
-                labelSpanM="4" emptySpanL="0" emptySpanM="0" columnsL="2" columnsM="2">
-                <f:content>
-                  <core:Title text="Workflow Log"/>
-                  <Label text="AR Requestor"/>
-                  <Text
-                    text="{ parts:[ {path: 'dtlModelValue>/Detail/ArReqName'}, {path: 'dtlModelValue>/Detail/ArRequestor'} ], formatter: 'emalDubalAR.util.formatter.concateARRequestorCreator' }"/>
-                  <Label text="AR Creator"/>
-                  <Text
-                    text="{ parts:[ {path: 'dtlModelValue>/Detail/CreatorName'}, {path: 'dtlModelValue>/Detail/CreatedBy'} ], formatter: 'emalDubalAR.util.formatter.concateARRequestorCreator' }"/>
-                  <Label text="Already Approved By"/>
-                  <List id="inBoxValues" inset="true" growing="true" growingScrollToLoad="true" width="100%" backgroundDesign="Solid"
-                    items="{ path:'detailWiLogModelValue>/wiLogItems' }" itemPress="">
-                    <items>
-                      <ObjectListItem
-                        title="{ parts:[ {path: 'Khat>NameText'}, {path: 'detailWiLogModelValue>Pernr'} ], formatter: 'emalDubalAR.util.formatter.concateNameAndEmployeeNumber' }"/>
-                    </items>
-                  </List>
-                </f:content>
-              </f:SimpleForm>
-            </VBox>
-          </IconTabFilter>
-          <IconTabFilter id="iconTabBarFilter5" icon="sap-icon://attachment" text="Attachment" tooltip="Attached Documents">
-            <VBox class="sapUiSmallMargin">
-              <f:SimpleForm id="attachedDocs" minWidth="1024" maxContainerCols="2" editable="false" layout="ResponsiveGridLayout" title="" labelSpanL="4"
-                labelSpanM="4" emptySpanL="0" emptySpanM="0" columnsL="2" columnsM="2">
-                <f:content>
-                  <core:Title text="Check Supporting Documents"/>
-                  <List id="attDocValues" inset="true" growing="true" growingScrollToLoad="true" width="100%" backgroundDesign="Solid"
-                    items="{ path:'docListModelValue>/attachments' }" itemPress="">
-                    <items>
-                      <ObjectListItem title='{docListModelValue>FileName}' type="Active" press="onDocSelect"></ObjectListItem>
-                    </items>
-                  </List>
-                </f:content>
-              </f:SimpleForm>
-            </VBox>
-          </IconTabFilter>
-        </items>
-      </IconTabBar>
-    </content>
-    <footer>
-      <Toolbar>
-        <content>
-          <ToolbarSpacer/>
-          <Button type="Accept" text="Approve" press="onPressAccept" icon="sap-icon://accept"/>
-          <Button visible="{localOnHoldVisibleModel>/isVisibleOnHold}" class="holdBtnStyle" text="On Hold" press="onPressOnHold"
-            icon="sap-icon://media-pause"/>
-          <Button type="Reject" text="Reject" press="onPressReject" icon="sap-icon://decline"/>
-        </content>
-      </Toolbar>
-    </footer>
-  </Page>
-</mvc:View>
+-->

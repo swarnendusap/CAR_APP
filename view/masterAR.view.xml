@@ -34,16 +34,19 @@
   width="100%"
   backgroundDesign="Solid"
   items="{
-    path:'LocalMasterModele>/masterList_e',
-    sorter: {
+    path:'LocalMasterModele>/masterList_e'
+
+  }"
+  itemPress=""
+  >
+  	<!-- ,
+  	sorter: {
       path: 'SAP__Origin',
       descending: false,
       group: true
     },
-    groupHeaderFactory: '.getGroupHeader'
-  }"
-  itemPress=""
-  >
+    groupHeaderFactory: '.getGroupHeader'-->
+  	
     <items> 
       <ObjectListItem 
       type="Active"
